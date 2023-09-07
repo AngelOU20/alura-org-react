@@ -6,10 +6,20 @@ export const FormComponent = () => {
   const [nombre, setNombre] = useState("");
   const [puesto, setPuesto] = useState("");
   const [foto, setFoto] = useState("");
+  const [equipo, setEquipo] = useState("");
 
   const manejarEnvio = (e) => {
     e.preventDefault();
     console.log("Manejar el envio");
+
+    let datosEnviar = {
+      nombre: nombre,
+      puesto: puesto,
+      foto: foto,
+      equipo: equipo,
+    };
+
+    console.log(datosEnviar);
   };
 
   return (
@@ -37,7 +47,7 @@ export const FormComponent = () => {
           valor={foto}
           setValor={setFoto}
         />
-        <SelectComponent />
+        <SelectComponent valor={equipo} setEquipo={setEquipo} />
         <ButtonComponent>Crear</ButtonComponent>
       </form>
     </section>

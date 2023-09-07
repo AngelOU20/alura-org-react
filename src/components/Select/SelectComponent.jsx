@@ -1,4 +1,5 @@
 import "./Select.css";
+import PropTypes from "prop-types";
 
 const equipos = [
   "Programación",
@@ -10,16 +11,36 @@ const equipos = [
   "Innovación y  Gestión",
 ];
 
-export const SelectComponent = () => {
+export const SelectComponent = ({ valor, setEquipo }) => {
+  const manejarCambio = (e) => {
+    console.log("cambio", e.target.value);
+    setEquipo(e.target.value);
+  };
+
   return (
     <fieldset className="lista-opciones">
       <label>Equipos</label>
-      <select>
-        <option className="option-default">Seleccionar equipo</option>
+      <select value={valor} onChange={manejarCambio}>
+        <option
+          value=""
+          className="option-default"
+          disabled
+          defaultValue=""
+          hidden
+        >
+          Seleccionar equipo
+        </option>
         {equipos.map((equipo, index) => (
-          <option key={index}>{equipo}</option>
+          <option key={index} value={equipo}>
+            {equipo}
+          </option>
         ))}
       </select>
     </fieldset>
   );
+};
+
+SelectComponent.propTypes = {
+  valor: PropTypes.string,
+  setEquipo: PropTypes.func,
 };
