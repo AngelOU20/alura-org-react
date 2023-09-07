@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { ButtonComponent, InputComponent, SelectComponent } from "../";
 import "./Form.css";
+import PropTypes from "prop-types";
 
-export const FormComponent = () => {
+export const FormComponent = ({ equipos, registrarColaborador }) => {
   const [nombre, setNombre] = useState("");
   const [puesto, setPuesto] = useState("");
   const [foto, setFoto] = useState("");
@@ -20,6 +21,7 @@ export const FormComponent = () => {
     };
 
     console.log(datosEnviar);
+    registrarColaborador(datosEnviar);
   };
 
   return (
@@ -47,9 +49,18 @@ export const FormComponent = () => {
           valor={foto}
           setValor={setFoto}
         />
-        <SelectComponent valor={equipo} setEquipo={setEquipo} />
+        <SelectComponent
+          valor={equipo}
+          setEquipo={setEquipo}
+          equipos={equipos}
+        />
         <ButtonComponent>Crear</ButtonComponent>
       </form>
     </section>
   );
+};
+
+FormComponent.propTypes = {
+  equipos: PropTypes.array,
+  registrarColaborador: PropTypes.func,
 };

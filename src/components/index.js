@@ -4,3 +4,6 @@ export * from "./Header/HeaderComponent";
 export * from "./Input/InputComponent";
 export * from "./MiOrg/MiOrgComponent";
 export * from "./Select/SelectComponent";
+export * from "./Equipo/EquipoComponent";
+export * from "./Colaborador/ColaboradorComponent";
+export * from "./Footer/FooterComponent";

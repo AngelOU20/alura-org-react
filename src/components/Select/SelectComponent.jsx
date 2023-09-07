@@ -1,17 +1,7 @@
 import "./Select.css";
 import PropTypes from "prop-types";
 
-const equipos = [
-  "Programación",
-  "Front End",
-  "Data Science",
-  "Devops",
-  "UX y Diseño",
-  "Móvil",
-  "Innovación y  Gestión",
-];
-
-export const SelectComponent = ({ valor, setEquipo }) => {
+export const SelectComponent = ({ equipos, valor, setEquipo }) => {
   const manejarCambio = (e) => {
     console.log("cambio", e.target.value);
     setEquipo(e.target.value);
@@ -41,6 +31,7 @@ export const SelectComponent = ({ valor, setEquipo }) => {
 };
 
 SelectComponent.propTypes = {
+  equipos: PropTypes.array,
   valor: PropTypes.string,
   setEquipo: PropTypes.func,
 };
