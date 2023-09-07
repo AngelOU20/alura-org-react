@@ -1,9 +1,18 @@
-import "./App.css";
+import { useState } from "react";
+import { FormComponent, HeaderComponent, MiOrgComponent } from "./components";
 
 function App() {
+  const [mostrarForm, setMostrarForm] = useState(true);
+
+  const cambiarMostrar = () => {
+    setMostrarForm(!mostrarForm);
+  };
+
   return (
     <>
-      <h1>Hola mundo!</h1>
+      <HeaderComponent />
+      {mostrarForm && <FormComponent />}
+      <MiOrgComponent cambiarMostrar={cambiarMostrar} />
     </>
   );
 }
