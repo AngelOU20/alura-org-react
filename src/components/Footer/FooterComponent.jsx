@@ -20,7 +20,7 @@ export const FooterComponent = () => {
       </div>
       <img src={Logo} alt="org" />
       <p>
-        Desarrollado por <a href="">AngelOU20</a>
+        Desarrollado por <a href="https://github.com/AngelOU20">AngelOU20</a>
       </p>
     </footer>
   );
