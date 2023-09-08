@@ -4,13 +4,20 @@ import "./Form.css";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 
-export const FormComponent = ({ equipos, registrarColaborador }) => {
+export const FormComponent = ({
+  equipos,
+  registrarColaborador,
+  crearEquipo,
+}) => {
   const [nombre, setNombre] = useState("");
   const [puesto, setPuesto] = useState("");
   const [foto, setFoto] = useState("");
   const [equipo, setEquipo] = useState("");
 
-  const manejarEnvio = (e) => {
+  const [titulo, setTitulo] = useState("");
+  const [color, setColor] = useState("");
+
+  const manejarEnvioColaborador = (e) => {
     e.preventDefault();
     console.log("Manejar el envio");
 
@@ -26,9 +33,15 @@ export const FormComponent = ({ equipos, registrarColaborador }) => {
     registrarColaborador(datosEnviar);
   };
 
+  const manejarEnvioEquipo = (e) => {
+    e.preventDefault();
+
+    crearEquipo({ id: uuidv4, titulo, colorPrimario: color });
+  };
+
   return (
     <section className="formulario">
-      <form onSubmit={manejarEnvio}>
+      <form onSubmit={manejarEnvioColaborador}>
         <h2>Rellena el formulario para crear el colaborador</h2>
         <InputComponent
           title={"Nombre"}
@@ -56,7 +69,26 @@ export const FormComponent = ({ equipos, registrarColaborador }) => {
           setEquipo={setEquipo}
           equipos={equipos}
         />
-        <ButtonComponent>Crear</ButtonComponent>
+        <ButtonComponent>Registrar colaborador</ButtonComponent>
+      </form>
+
+      <form onSubmit={manejarEnvioEquipo}>
+        <h2>Rellena el formulario para crear un equipo</h2>
+        <InputComponent
+          title={"Título"}
+          placeholder={"Ingresar título"}
+          required
+          valor={titulo}
+          setValor={setTitulo}
+        />
+        <InputComponent
+          title={"Color"}
+          placeholder={"Ingresar color"}
+          required
+          valor={color}
+          setValor={setColor}
+        />
+        <ButtonComponent>Crear equipo</ButtonComponent>
       </form>
     </section>
   );
@@ -65,4 +97,5 @@ export const FormComponent = ({ equipos, registrarColaborador }) => {
 FormComponent.propTypes = {
   equipos: PropTypes.array,
   registrarColaborador: PropTypes.func,
+  crearEquipo: PropTypes.func,
 };

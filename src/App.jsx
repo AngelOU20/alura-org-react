@@ -18,7 +18,6 @@ function App() {
   };
 
   const registrarColaborador = (colaborador) => {
-    console.log("Nuevo colaborador", colaborador);
     //Spread operator
     setColaboradores([...colaboradores, colaborador]);
   };
@@ -42,20 +41,25 @@ function App() {
     setEquipos(equiposActualizados);
   };
 
+  const crearEquipo = (nuevoEquipo) => {
+    setEquipos([...equipos, { ...nuevoEquipo }]);
+  };
+
   return (
     <>
       <HeaderComponent />
 
       {mostrarForm && (
         <FormComponent
-          equipos={equiposData.map((equipo) => equipo.titulo)}
+          equipos={equipos.map((equipo) => equipo.titulo)}
           registrarColaborador={registrarColaborador}
+          crearEquipo={crearEquipo}
         />
       )}
 
       <MiOrgComponent cambiarMostrar={cambiarMostrar} />
 
-      {equiposData.map((equipo) => (
+      {equipos.map((equipo) => (
         <EquipoComponent
           key={equipo.titulo}
           {...equipo}
