@@ -11,7 +11,6 @@ export const InputComponent = ({
   const placeholderModificado = `${placeholder}...`;
   const manejarCambio = (e) => {
     setValor(e.target.value);
-    console.log(valor);
   };
 
   return (
