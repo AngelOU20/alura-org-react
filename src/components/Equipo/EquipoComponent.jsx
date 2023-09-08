@@ -1,27 +1,34 @@
 import { ColaboradorComponent } from "../";
 import "./Equipo.css";
 import PropTypes from "prop-types";
+import hexToRgba from "hex-to-rgba";
 
 export const EquipoComponent = ({
+  id,
   titulo,
   colorPrimario,
-  colorSecundario,
   colaboradores,
+  eliminarColaborador,
+  actualizarColor,
 }) => {
   const estiloTitulo = {
     borderColor: colorPrimario,
   };
 
   const backgroundColor = {
-    backgroundColor: colorSecundario,
+    backgroundColor: hexToRgba(colorPrimario, 0.6),
   };
-
-  console.log(colaboradores.length > 0);
 
   return (
     <>
       {colaboradores.length > 0 && (
         <section className="equipo" style={backgroundColor}>
+          <input
+            className="cambiar-color"
+            type="color"
+            value={colorPrimario}
+            onChange={(e) => actualizarColor(e.target.value, id)}
+          />
           <h3 style={estiloTitulo}>{titulo}</h3>
           <div className="colaboradores">
             {colaboradores.map((colaborador, index) => (
@@ -29,6 +36,7 @@ export const EquipoComponent = ({
                 key={index}
                 colorPrimario={colorPrimario}
                 colaborador={colaborador}
+                eliminarColaborador={eliminarColaborador}
               />
             ))}
           </div>
@@ -39,8 +47,10 @@ export const EquipoComponent = ({
 };
 
 EquipoComponent.propTypes = {
+  id: PropTypes.string,
   titulo: PropTypes.string.isRequired,
   colorPrimario: PropTypes.string.isRequired,
-  colorSecundario: PropTypes.string.isRequired,
   colaboradores: PropTypes.array,
+  eliminarColaborador: PropTypes.func,
+  actualizarColor: PropTypes.func,
 };

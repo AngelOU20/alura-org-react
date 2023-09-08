@@ -4,6 +4,19 @@
   box-sizing: border-box;
   text-align: center;
   font-size: 32px;
+
+  position: relative;
+}
+
+.cambiar-color {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+
+  background: none;
+  border: none;
+  height: 40px;
+  width: 40px;
 }
 
 .equipo h3 {
