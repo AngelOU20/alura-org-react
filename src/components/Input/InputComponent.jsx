@@ -7,6 +7,7 @@ export const InputComponent = ({
   required,
   valor,
   setValor,
+  type = "text",
 }) => {
   const placeholderModificado = `${placeholder}...`;
   const manejarCambio = (e) => {
@@ -14,13 +15,14 @@ export const InputComponent = ({
   };
 
   return (
-    <fieldset className="campo-texto">
+    <fieldset className={`campo campo-${type}`}>
       <label>{title}</label>
       <input
         placeholder={placeholderModificado}
         required={required}
         value={valor}
         onChange={manejarCambio}
+        type={type}
       />
     </fieldset>
   );
@@ -32,4 +34,5 @@ InputComponent.propTypes = {
   required: PropTypes.bool,
   valor: PropTypes.string,
   setValor: PropTypes.func,
+  type: PropTypes.string,
 };

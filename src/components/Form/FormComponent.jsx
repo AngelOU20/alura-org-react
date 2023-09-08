@@ -87,6 +87,7 @@ export const FormComponent = ({
           required
           valor={color}
           setValor={setColor}
+          type={"color"}
         />
         <ButtonComponent>Crear equipo</ButtonComponent>
       </form>
