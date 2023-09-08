@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ButtonComponent, InputComponent, SelectComponent } from "../";
 import "./Form.css";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 
 export const FormComponent = ({ equipos, registrarColaborador }) => {
   const [nombre, setNombre] = useState("");
@@ -14,6 +15,7 @@ export const FormComponent = ({ equipos, registrarColaborador }) => {
     console.log("Manejar el envio");
 
     let datosEnviar = {
+      id: uuidv4(),
       nombre: nombre,
       puesto: puesto,
       foto: foto,
