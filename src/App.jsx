@@ -9,8 +9,9 @@ import {
 import { equiposData, colaboradoresData } from "./data";
 
 function App() {
-  const [mostrarForm, setMostrarForm] = useState(true);
+  const [mostrarForm, setMostrarForm] = useState(false);
   const [colaboradores, setColaboradores] = useState(colaboradoresData);
+  const [equipos, setEquipos] = useState(equiposData);
 
   const cambiarMostrar = () => {
     setMostrarForm(!mostrarForm);
@@ -22,7 +23,24 @@ function App() {
     setColaboradores([...colaboradores, colaborador]);
   };
 
-  console.log(colaboradores);
+  const eliminarColaborador = (id) => {
+    const actualizarColaboradores = colaboradores.filter(
+      (colaborador) => colaborador.id !== id
+    );
+    setColaboradores(actualizarColaboradores);
+  };
+
+  const actualizarColor = (color, id) => {
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.id === id) {
+        equipo.colorPrimario = color;
+      }
+
+      return equipo;
+    });
+
+    setEquipos(equiposActualizados);
+  };
 
   return (
     <>
@@ -44,6 +62,8 @@ function App() {
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.equipo === equipo.titulo
           )}
+          eliminarColaborador={eliminarColaborador}
+          actualizarColor={actualizarColor}
         />
       ))}
 
