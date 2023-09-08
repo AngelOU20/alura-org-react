@@ -10,6 +10,7 @@ export const EquipoComponent = ({
   colaboradores,
   eliminarColaborador,
   actualizarColor,
+  agregarFav,
 }) => {
   const estiloTitulo = {
     borderColor: colorPrimario,
@@ -37,6 +38,7 @@ export const EquipoComponent = ({
                 colorPrimario={colorPrimario}
                 colaborador={colaborador}
                 eliminarColaborador={eliminarColaborador}
+                agregarFav={agregarFav}
               />
             ))}
           </div>
@@ -53,4 +55,5 @@ EquipoComponent.propTypes = {
   colaboradores: PropTypes.array,
   eliminarColaborador: PropTypes.func,
   actualizarColor: PropTypes.func,
+  agregarFav: PropTypes.func,
 };

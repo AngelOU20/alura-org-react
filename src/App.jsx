@@ -45,6 +45,17 @@ function App() {
     setEquipos([...equipos, { ...nuevoEquipo }]);
   };
 
+  const agregarFav = (id) => {
+    const colaboradoresActualizados = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav;
+      }
+      return colaborador;
+    });
+
+    setColaboradores(colaboradoresActualizados);
+  };
+
   return (
     <>
       <HeaderComponent />
@@ -68,6 +79,7 @@ function App() {
           )}
           eliminarColaborador={eliminarColaborador}
           actualizarColor={actualizarColor}
+          agregarFav={agregarFav}
         />
       ))}
 

@@ -50,3 +50,11 @@
   font-size: 30px;
   cursor: pointer;
 }
+
+.fav {
+  position: absolute;
+  right: 125px;
+  bottom: 5px;
+
+  cursor: pointer;
+}
